@@ -1,0 +1,275 @@
+<html>
+    <head>
+        <title>Account Setting</title>
+        <link href="style.css" type="text/css" rel="stylesheet"/>
+         <script  src="jquery-3.6.0.min.js"></script>
+          <script type="text/javascript">
+         $(document).ready(function(){
+
+         $("#NJob").click(function(){
+             $("#NewJob").show();
+             $("#JobList").hide(); 
+
+             })
+
+        $("#JList").click(function(){
+          $("#NewJob").hide();
+          $("#JobList").show(); 
+             
+             })
+
+        $("#save").click(function(){
+            debugger;
+         var titel=$("#txtJobTitle").val();
+         var type=$("#JobType").val();
+         var loc=$("#ddlJobLocation").val();
+          if(type=="Design"){
+
+           var sp1=$("<span/>").text(titel);
+           sp1.attr("class","JobElementTitle");
+          
+             
+             var sp2=$("<span/>").text(type);
+           sp2.attr("class","JobElementType");
+
+
+             var sp3=$("<span/>").text(loc);
+           sp3.attr("class","JobElementLocation");
+            
+           var div1=$("<div/>");
+           div1.attr("class","ContentRow")
+
+           var div2=$("<div/>");
+           div2.attr("class","Row")
+
+           var div3=$("<div/>");
+           div3.attr("class","TasksBox")
+           sp1.appendTo(div3);
+           sp2.appendTo(div3);
+           sp3.appendTo(div3);
+
+           div1.append(div2);
+           div2.append(div3);
+
+        $("#DesignJobs").append(div1) 
+            }
+            
+            
+            else{
+                
+
+var sp1=$("<span/>").text(titel);
+sp1.attr("class","JobElementTitle");
+
+  
+  var sp2=$("<span/>").text(type);
+sp2.attr("class","JobElementType");
+
+
+  var sp3=$("<span/>").text(loc);
+sp3.attr("class","JobElementLocation");
+ 
+var div1=$("<div/>");
+div1.attr("class","ContentRow")
+
+var div2=$("<div/>");
+div2.attr("class","Row")
+
+var div3=$("<div/>");
+div3.attr("class","TasksBox")
+ 
+div1.append(div2);
+div2.append(div3);
+
+sp1.appendTo(div3);
+sp2.appendTo(div3);
+sp3.appendTo(div3);
+$("#DevelopmentJobs").append(div1)
+}
+
+})
+$("#JobLocation").change(function(){
+    debugger;
+  if($(this).val()=="USA"){
+      var rows=$(".TasksBox")
+ for(var i=0; i<=rows.length ;i++){
+     var r = rows[i].lastElementChild.innerHTML;
+
+     if(r=="Jordan")
+     {
+      rows[i].parentNode.remove();
+     }
+ 
+  }}
+  
+  else{
+      if($(this).val()=="Jordan"){
+      var rows=$(".TasksBox")
+ for(var i=0; i<=rows.length ;i++){
+     var r = rows[i].lastElementChild.innerHTML;
+
+     if(r=="USA"){
+      rows[i].parentNode.remove();
+     }
+
+    }
+}else{
+    
+    if($(this).val()=="Jordan"){
+      var rows=$(".TasksBox")
+ for(var i=0; i<=rows.length ;i++){
+     var r = rows[i].lastElementChild.innerHTML;}
+
+
+}
+
+  }}
+
+
+
+
+})
+
+
+
+
+
+
+
+         })
+        </script>
+
+    
+    </head>
+    <body>
+<div class="ContentBox">
+<div class="Menu">
+<div class="MenuItems" id="NJob">
+    <span class="MenuText"  >New Job</span>
+</div>
+<div class="MenuItems"  id="JList">
+    <span class="MenuText">Job List</span>
+</div>
+</div>
+<div class="Content" >
+
+    <div id="NewJob" class="ContentDev">
+
+
+    <div class="ContentRow">
+    <span>
+        Job Title
+    </span>
+    <div class="Row">
+        <input type="text" id="txtJobTitle" />
+    </div>
+</div>
+<div class="ContentRow">
+    <span>
+        Type of Job
+    </span>
+    <div class="Row">
+        <select class="FormCountrol" id="JobType">
+            <option>Design</option>
+            <option>Development</option>
+        </select>
+    </div>
+</div>
+<div class="ContentRow">
+    <span>
+        Location
+    </span>
+    <div class="Row">
+        <select class="FormCountrol" id="ddlJobLocation" >
+            <option>USA</option>
+            <option>Jordan</option>
+        </select>
+    </div>
+</div>
+<div class="actionBar">
+    <div class="SaveChangesBox">
+        <button class="btn ButtonSubmit" id="save" >Save Changes</button>
+    </div>
+    <div class="CancelBox">
+        <button class="btn btn-default" id="cancel" >Cancel</button>
+    </div>
+</div>
+</div>
+
+
+
+<div id="JobList" class="ContentDev" style="display: none;">
+
+
+    <div class="ContentRow">
+        <span>
+            Location
+        </span>
+        <div class="Row">
+            <select class="FormCountrol" id="JobLocation" style="width: 30%;" >
+                <option>ALL</option>
+                <option>USA</option>
+                <option>Jordan</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="SubTitleBlock">
+        <span class="SubTitleText">Design</span>
+    </div>
+    <div id="DesignJobs">
+    <div class="ContentRow">
+        <div class="Row">
+            <div class="TasksBox">
+                <span class="JobElementTitle">Senior Graphic Designer</span>
+                <span class="JobElementType">Full Time</span>
+                <span class="JobElementLocation">USA</span>
+            </div>
+        </div>
+    </div>
+    <div class="ContentRow">
+        <div class="Row">
+            <div class="TasksBox">
+                <span class="JobElementTitle">Senior Graphic Designer</span>
+                <span class="JobElementType">Full Time</span>
+                <span class="JobElementLocation">Jordan</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="SubTitleBlock">
+    <span class="SubTitleText">Development</span>
+</div>
+<div id="DevelopmentJobs">
+<div class="ContentRow">
+    <div class="Row">
+        <div class="TasksBox">
+            <span class="JobElementTitle">.NET Developer</span>
+            <span class="JobElementType">Full Time</span>
+            <span class="JobElementLocation">Jordan</span>
+        </div>
+    </div>
+</div>
+<div class="ContentRow">
+    <div class="Row">
+        <div class="TasksBox">
+            <span class="JobElementTitle">.NET Developer</span>
+            <span class="JobElementType">Full Time</span>
+            <span class="JobElementLocation">USA</span>
+        </div>
+    </div>
+</div>
+</div>
+
+    
+</div>
+
+  
+  
+</div>
+</div>
+
+
+    </body>
+</html>
